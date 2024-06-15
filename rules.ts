@@ -1,4 +1,6 @@
-export function underpopulation({cell, aliveNeighbours}) {
+import { Rule } from './engine'
+
+export const underpopulation: Rule = ({cell, aliveNeighbours}) => {
     if (!cell.alive) { return }
 
     if (aliveNeighbours < 2) { return false }
@@ -6,7 +8,7 @@ export function underpopulation({cell, aliveNeighbours}) {
     return
 }
 
-export function nextGeneration({cell, aliveNeighbours}) {
+export const nextGeneration: Rule = ({cell, aliveNeighbours}) => {
     if (!cell.alive) { return }
 
     if (aliveNeighbours === 2 || aliveNeighbours === 3) { return true }
@@ -14,7 +16,7 @@ export function nextGeneration({cell, aliveNeighbours}) {
     return
 }
 
-export function overpopulation({cell, aliveNeighbours}) {
+export const overpopulation: Rule = ({cell, aliveNeighbours}) => {
     if (!cell.alive) { return }
 
     if (aliveNeighbours > 3) { return false }
@@ -22,7 +24,7 @@ export function overpopulation({cell, aliveNeighbours}) {
     return
 }
 
-export function reproduction({cell, aliveNeighbours}) {
+export const reproduction: Rule = ({cell, aliveNeighbours}) => {
     if (cell.alive) { return }
 
     if (aliveNeighbours === 3) { return true }
